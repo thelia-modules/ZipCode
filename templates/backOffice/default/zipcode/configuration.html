@@ -1,0 +1,58 @@
+{extends file="admin-layout.tpl"}
+
+{block name="after-bootstrap-css"}
+
+{/block}
+
+{block name="no-return-functions"}
+    {$admin_current_location = 'module'}
+{/block}
+
+{block name="page-title"}{intl l='ZipCode module configuration' d='zipcode.bo.default'}{/block}
+
+{block name="check-resource"}admin.module{/block}
+{block name="check-access"}view{/block}
+{block name="check-module"}ZipCode{/block}
+
+{block name="main-content"}
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+            {intl l="ZipCode configuration"}
+        </h4>
+      </div>
+        {form name="zipcode_configuration_form"}
+          <form action="{url path="/admin/module/zipcode/configuration"}" method="post">
+              {form_hidden_fields form=$form}
+
+              {if $form_error}
+                <div class="alert alert-danger">{$form_error_message}</div>
+              {/if}
+
+              {form_field form=$form field='success_url'}
+                <input type="hidden" name="{$name}" value="{url path={navigate to="current"}}"/>
+              {/form_field}
+
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                    {$data = null}
+                    {render_form_field form=$form field="geonames_username" value={$data}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <input type="submit" class="btn btn-success form-control">
+              </div>
+            </div>
+          </form>
+        {/form}
+    </div>
+  </div>
+{/block}
+
+{block name="javascript-initialization"}
+
+{/block}

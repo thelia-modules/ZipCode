@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="admin.zipcode.config" path="/admin/module/ZipCode">
+        <default key="_controller">ZipCode\Controller\ConfigurationController::viewAction</default>
+    </route>
+
+    <route id="admin.zipcode.config.save" path="/admin/module/zipcode/configuration">
+        <default key="_controller">ZipCode\Controller\ConfigurationController::saveAction</default>
+    </route>
+
+    <route id="zipcode_isolapha2" path="/zipcode/isoalpha2/{id}">
+        <default key="_controller">ZipCode\Controller\FrontController::getCountryIsoAlpha2FromId</default>
+    </route>
+</routes>
