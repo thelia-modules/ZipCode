@@ -7,7 +7,12 @@ if (null !== zipcodeInput) {
         clearSuggestion();
         citySuggestion.append(loader.cloneNode(true));
         zipcodeSuggestion.append(loader.cloneNode(true));
-        getIsoAlpha2(countrySelector.options[countrySelector.selectedIndex].value).then(function () {
+
+        if (null !== countrySelector) {
+            countryId = countrySelector.options[countrySelector.selectedIndex].value;
+        }
+
+        getIsoAlpha2(countryId).then(function () {
             var baseUrl = 'https://secure.geonames.org/postalCodeSearchJSON?maxRows=5&username=' + geonames_username + '&country=';
             return fetch(baseUrl + countryIsoAlpha2 + "&" + searchType + '=' + search).then(function (response) {
                 return response.json();
@@ -124,6 +129,7 @@ if (null !== zipcodeInput) {
 
     var countrySelector = document.getElementById("country");
     var countryIsoAlpha2 = 'fr';
+    var countryId = '64';
 
     var loader = document.createElement("li");
     loader.className = "loader";

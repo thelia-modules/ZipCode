@@ -37,7 +37,8 @@ if (null !== zipcodeInput) {
     });
 
     let countrySelector = document.getElementById("country");
-    let countryIsoAlpha2 = 'fr';
+    let countryIsoAlpha2= 'fr';
+    let countryId= '64';
 
     let loader = document.createElement("li");
     loader.className = "loader";
@@ -49,7 +50,12 @@ if (null !== zipcodeInput) {
         clearSuggestion();
         citySuggestion.append(loader.cloneNode(true));
         zipcodeSuggestion.append(loader.cloneNode(true));
-        getIsoAlpha2(countrySelector.options[countrySelector.selectedIndex].value)
+
+        if (null !== countrySelector) {
+            countryId = countrySelector.options[countrySelector.selectedIndex].value
+        }
+
+        getIsoAlpha2(countryId)
             .then(function () {
                     let baseUrl = 'https://secure.geonames.org/postalCodeSearchJSON?maxRows=5&username='+geonames_username+'&country=';
                     return fetch(baseUrl+countryIsoAlpha2+"&"+searchType+'='+search)
