@@ -70,7 +70,7 @@ if (null !== zipcodeInput) {
 
     var createCircle = function createCircle(position) {
         var circle = document.createElement("div");
-        circle.className = "circle " + position;
+        circle.className = "zipcode-circle zipcode-" + position;
         return circle;
     };
 
@@ -94,7 +94,7 @@ if (null !== zipcodeInput) {
 
     var zipcodeSuggestion = document.createElement("ul");
     zipcodeSuggestion.id = "zipcode_suggestion";
-    zipcodeSuggestion.className = "hidden suggestion";
+    zipcodeSuggestion.className = "hidden zipcode-suggestion";
     zipcodeInput.parentNode.insertBefore(zipcodeSuggestion, zipcodeInput.nextSibling);
     zipcodeInput.addEventListener('change', function () {
         geonamesCall(zipcodeInput.value, 'postalcode');
@@ -111,7 +111,7 @@ if (null !== zipcodeInput) {
     var cityInput = document.getElementById("city");
     var citySuggestion = document.createElement("ul");
     citySuggestion.id = "city_suggestion";
-    citySuggestion.className = "hidden suggestion";
+    citySuggestion.className = "hidden zipcode-suggestion";
     cityInput.parentNode.insertBefore(citySuggestion, cityInput.nextSibling);
     cityInput.addEventListener('change', function () {
         geonamesCall(cityInput.value, 'placename');

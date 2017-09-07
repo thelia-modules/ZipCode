@@ -1,4 +1,4 @@
-.suggestion {
+.zipcode-suggestion {
   list-style: none;
   position: absolute;
   display: block;
@@ -6,7 +6,7 @@
   padding-left: 0;
   padding-right: 30px;
   z-index: 500; }
-  .suggestion li {
+  .zipcode-suggestion li {
     position: relative;
     display: block;
     padding: 5px;
@@ -15,10 +15,10 @@
     min-width: 100%;
     cursor: pointer;
     z-index: 1500; }
-    .suggestion li:hover {
+    .zipcode-suggestion li:hover {
       background: white; }
 
-.circle {
+.zipcode-circle {
   display: inline-block;
   width: 7px;
   height: 7px;
@@ -30,15 +30,12 @@
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
   animation-timing-function: ease-in-out; }
-
-.left {
-  margin-left: 42%; }
-
-.middle {
-  animation-delay: .3s; }
-
-.right {
-  animation-delay: .6s; }
+  .zipcode-circle.zipcode-left {
+    margin-left: 42%; }
+  .zipcode-circle.zipcode-middle {
+    animation-delay: .3s; }
+  .zipcode-circle.zipcode-right {
+    animation-delay: .6s; }
 
 @keyframes circular {
   from {

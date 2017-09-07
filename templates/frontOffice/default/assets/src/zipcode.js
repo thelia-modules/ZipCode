@@ -3,7 +3,7 @@ let zipcodeInput = document.getElementById("zipcode");
 if (null !== zipcodeInput) {
     let zipcodeSuggestion = document.createElement("ul");
     zipcodeSuggestion.id = "zipcode_suggestion";
-    zipcodeSuggestion.className = "hidden suggestion";
+    zipcodeSuggestion.className = "hidden zipcode-suggestion";
     zipcodeInput.parentNode.insertBefore(zipcodeSuggestion, zipcodeInput.nextSibling);
     zipcodeInput.addEventListener('change', function() {geonamesCall(zipcodeInput.value,'postalcode')});
     zipcodeInput.addEventListener('focus', function()
@@ -20,7 +20,7 @@ if (null !== zipcodeInput) {
     let cityInput = document.getElementById("city");
     let citySuggestion = document.createElement("ul");
     citySuggestion.id = "city_suggestion";
-    citySuggestion.className = "hidden suggestion";
+    citySuggestion.className = "hidden zipcode-suggestion";
     cityInput.parentNode.insertBefore(citySuggestion, cityInput.nextSibling);
     cityInput.addEventListener('change', function() {geonamesCall(cityInput.value,'placename')});
     cityInput.addEventListener('focus', function()
@@ -116,7 +116,7 @@ if (null !== zipcodeInput) {
 
     function createCircle(position) {
         let circle = document.createElement("div");
-        circle.className = "circle "+position;
+        circle.className = "zipcode-circle zipcode-"+position;
         return circle;
     }
 
