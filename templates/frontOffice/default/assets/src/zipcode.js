@@ -127,7 +127,9 @@ if (null !== zipcodeInput) {
     }
 
     function getIsoAlpha2(id) {
-        return fetch("/zipcode/isoalpha2/"+id).then(response => {
+        return fetch("/zipcode/isoalpha2/"+id, {
+            credentials: 'include'
+        }).then(response => {
             return response.json();
         }).then(function(response) {
             countryIsoAlpha2 = response.isoalpha2;
