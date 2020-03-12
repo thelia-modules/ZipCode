@@ -58,7 +58,11 @@ if (null !== zipcodeInput) {
         getIsoAlpha2(countryId)
             .then(function () {
                     let baseUrl = 'https://secure.geonames.org/postalCodeSearchJSON?maxRows=5&username='+geonames_username+'&country=';
-                    return fetch(baseUrl+countryIsoAlpha2+"&"+searchType+'='+search)
+                    return fetch(baseUrl+countryIsoAlpha2+"&"+searchType+'='+search, {
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest"
+                        }
+                    })
                         .then(response => {
                             return response.json();
                         }).then(response => {
@@ -127,14 +131,20 @@ if (null !== zipcodeInput) {
     }
 
     function getIsoAlpha2(id) {
-        return fetch("/zipcode/isoalpha2/"+id, {
-            credentials: 'include'
-        }).then(response => {
+        return fetch("/zipcode/isoalpha2/" + id, {
+          credentials: "include",
+          headers: {
+            "X-Requested-With": "XMLHttpRequest"
+          }
+        })
+          .then(response => {
             return response.json();
-        }).then(function(response) {
+          })
+          .then(function(response) {
             countryIsoAlpha2 = response.isoalpha2;
-        }).catch(function (response) {
-            countryIsoAlpha2 = 'fr';
-        });
+          })
+          .catch(function(response) {
+            countryIsoAlpha2 = "fr";
+          });
     }
 }
