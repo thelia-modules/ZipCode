@@ -2,6 +2,7 @@
 
 namespace ZipCode\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Thelia\Core\Translation\Translator;
 use Thelia\Form\BaseForm;
 use ZipCode\ZipCode;
@@ -12,7 +13,7 @@ class ConfigurationForm extends BaseForm
     {
         $this->formBuilder->add(
             "geonames_username",
-            "text",
+            TextType::class,
             [
                 "data" => ZipCode::getConfigValue("geonames_username"),
                 "label"=>Translator::getInstance()->trans("Geonames username", [], ZipCode::DOMAIN_NAME),
@@ -22,7 +23,7 @@ class ConfigurationForm extends BaseForm
         );
     }
 
-    public function getName()
+    public static function getName()
     {
         return "zipcode_configuration_form";
     }
