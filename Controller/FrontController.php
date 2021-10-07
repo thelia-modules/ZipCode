@@ -5,9 +5,16 @@ namespace ZipCode\Controller;
 use Thelia\Controller\Front\BaseFrontController;
 use Thelia\Core\HttpFoundation\JsonResponse;
 use Thelia\Model\CountryQuery;
+use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/zipcode/isoalpha2", name="front_zipcode")
+ */
 class FrontController extends BaseFrontController
 {
+    /**
+     * @Route("/{id}", name="_isolapha2", methods="GET")
+     */
     public function getCountryIsoAlpha2FromId($id)
     {
         $country = CountryQuery::create()
