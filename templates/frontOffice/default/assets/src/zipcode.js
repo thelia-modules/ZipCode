@@ -57,8 +57,8 @@ if (null !== zipcodeInput) {
 
         getIsoAlpha2(countryId)
             .then(function () {
-                    let baseUrl = 'https://secure.geonames.org/postalCodeSearchJSON?maxRows=5&username='+geonames_username+'&country=';
-                    return fetch(baseUrl+countryIsoAlpha2+"&"+searchType+'='+search, {
+                    let baseUrl = geonamesBaseUrl + '?maxRows=5&country=';
+                    return fetch(baseUrl+countryIsoAlpha2+'&mode='+searchType+'q='+search, {
                         headers: {
                             "X-Requested-With": "XMLHttpRequest"
                         }
