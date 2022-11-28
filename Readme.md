@@ -18,7 +18,7 @@ This module add two auto suggestion :
 Add it in your main thelia composer.json file
 
 ```
-composer require thelia/zip-code-module:~1.0
+composer require thelia/zip-code-module:~2.0
 ```
 
 ## Usage
