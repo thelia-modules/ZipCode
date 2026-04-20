@@ -2,22 +2,18 @@
 
 namespace ZipCode\Controller;
 
+use Symfony\Component\Routing\Attribute\Route;
 use Thelia\Controller\Front\BaseFrontController;
 use Thelia\Core\HttpFoundation\JsonResponse;
 use Thelia\Core\HttpFoundation\Request;
 use Thelia\Model\CountryQuery;
-use Symfony\Component\Routing\Annotation\Route;
 use ZipCode\ZipCode;
 
-/**
- * @Route("/zipcode", name="front_zipcode")
- */
+#[Route("/zipcode", name:  "front_zipcode")]
 class FrontController extends BaseFrontController
 {
-    /**
-     * @Route("/isoalpha2/{id}", name="_isolapha2", methods="GET")
-     */
-    public function getCountryIsoAlpha2FromId($id)
+    #[Route("/isoalpha2/{id}", name:  "_isolapha2", methods: "GET")]
+    public function getCountryIsoAlpha2FromId($id): JsonResponse
     {
         $country = CountryQuery::create()
             ->findPk($id);
@@ -29,10 +25,8 @@ class FrontController extends BaseFrontController
         return new JsonResponse(['isoalpha2'=>$country->getIsoalpha2()]);
     }
 
-    /**
-     * @Route("/query", name="_query", methods="GET")
-     */
-    public function query(Request $request)
+    #[Route("/query", name:  "_query", methods: "GET")]
+    public function query(Request $request): JsonResponse
     {
         $searchMode = $request->get('mode', 'postalcode');
         $searchTerm = $request->get('q', '');
