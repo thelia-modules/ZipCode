@@ -2,23 +2,21 @@
 
 namespace ZipCode\Controller;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use ZipCode\Form\ConfigurationForm;
 use ZipCode\ZipCode;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\Security\AccessManager;
 use Thelia\Core\Security\Resource\AdminResources;
 use Thelia\Core\Translation\Translator;
-use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/module", name="admin_zipcode")
- */
+#[Route("/admin/module", name:  "admin_zipcode")]
 class ConfigurationController extends BaseAdminController
 {
-    /**
-     * @Route("/ZipCode", name="_config", methods="GET")
-     */
-    public function viewAction()
+    #[Route("/ZipCode", name:  "_config", methods: "GET")]
+    public function viewAction(): ?Response
     {
         if (null !== $response = $this->checkAuth([AdminResources::MODULE], 'ZipCode', AccessManager::VIEW)) {
             return $response;
@@ -27,10 +25,8 @@ class ConfigurationController extends BaseAdminController
         return $this->render("zipcode/configuration");
     }
 
-    /**
-     * @Route("/zipcode/configuration", name="_config_save", methods="POST")
-     */
-    public function saveAction()
+    #[Route("/zipcode/configuration", name:  "_config_save", methods: "POST")]
+    public function saveAction(): RedirectResponse|Response|null
     {
         if (null !== $response = $this->checkAuth([AdminResources::MODULE], 'ZipCode', AccessManager::UPDATE)) {
             return $response;

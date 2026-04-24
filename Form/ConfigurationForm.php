@@ -23,7 +23,7 @@ class ConfigurationForm extends BaseForm
         );
     }
 
-    public static function getName()
+    public static function getName(): string
     {
         return "zipcode_configuration_form";
     }
