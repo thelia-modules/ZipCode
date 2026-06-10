@@ -1,0 +1,32 @@
+{# ZipCode module configuration — hook fragment, no extends #}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">{{ 'ZipCode configuration'|trans({}, 'zipcode.bo.default') }}</h4>
+    </div>
+    <div class="card-body">
+        {{ form_start(form, {action: path('admin_zipcode_config_save'), method: 'POST'}) }}
+
+        {% if app.session.flashBag.has('error') %}
+            <div class="alert alert-danger">
+                {% for msg in app.session.flashBag.get('error') %}{{ msg }}{% endfor %}
+            </div>
+        {% endif %}
+
+        <input type="hidden"
+               name="{{ form.vars.full_name }}[success_url]"
+               value="{{ path('admin.module.configure', {module_code: 'ZipCode'}) }}">
+
+        <div class="mb-3">
+            {{ form_label(form.geonames_username) }}
+            {{ form_widget(form.geonames_username, {attr: {class: 'form-control' ~ (form.geonames_username.vars.errors|length ? ' is-invalid' : '')}}) }}
+            {{ form_errors(form.geonames_username) }}
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            <i class="bi bi-save"></i>
+            {{ 'Save'|trans({}, 'zipcode.bo.default') }}
+        </button>
+
+        {{ form_end(form) }}
+    </div>
+</div>

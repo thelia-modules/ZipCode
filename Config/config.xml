@@ -10,30 +10,16 @@
         -->
     </loops>
 
-    <forms>
-        <form name="zipcode_configuration_form" class="ZipCode\Form\ConfigurationForm" />
-    </forms>
-
-
     <commands>
         <!--
         <command class="ZipCode\Command\MySuperCommand" />
         -->
     </commands>
 
-    <!--
-    <services>
-
-    </services>
-    -->
-
     <hooks>
         <hook id="zipcode.hook.assets">
             <tag name="hook.event_listener" event="main.javascript-initialization" type="front" templates="js:assets/dist/zipcode.js"/>
             <tag name="hook.event_listener" event="main.stylesheet" type="front" templates="css:assets/dist/zipcode.css"/>
-        </hook>
-        <hook id="zipcode.hook" class="ZipCode\Hook\FrontHook">
-            <tag name="hook.event_listener" event="main.after-javascript-include" type="front" method="getJsVar"/>
         </hook>
     </hooks>
 
