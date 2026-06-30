@@ -28,12 +28,12 @@ class FrontController extends BaseFrontController
     #[Route("/query", name:  "_query", methods: "GET")]
     public function query(Request $request): JsonResponse
     {
-        $searchMode = $request->get('mode', 'postalcode');
-        $searchTerm = $request->get('q', '');
+        $searchMode = $request->attributes->get('mode', $request->query->get('mode', $request->request->get('mode', 'postalcode')));
+        $searchTerm = $request->attributes->get('q', $request->query->get('q', $request->request->get('q', '')));
 
         $data = [
-            'country' => $request->get('country', 'fr'),
-            'maxRows' => (int) $request->get('maxRows', 10),
+            'country' => $request->attributes->get('country', $request->query->get('country', $request->request->get('country', 'fr'))),
+            'maxRows' => (int) $request->attributes->get('maxRows', $request->query->get('maxRows', $request->request->get('maxRows', 10))),
             $searchMode => $searchTerm,
             'username' => ZipCode::getConfigValue('geonames_username'),
         ];
