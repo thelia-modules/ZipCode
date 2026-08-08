@@ -36,6 +36,6 @@
         <module version="&gt;0.2">HookSearch</module>
     </required>
     -->
-    <thelia>2.5.0</thelia>
-    <stability>other</stability>
+    <thelia>3.0.0</thelia>
+    <stability>prod</stability>
 </module>
